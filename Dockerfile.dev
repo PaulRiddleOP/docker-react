@@ -1,0 +1,13 @@
+# Specify a base image
+FROM node:alpine
+
+WORKDIR /app
+
+# Install some dependencies
+COPY ./package.json .
+RUN npm install
+RUN npm config set unsafe-perm true
+COPY . .
+
+# Setup a default command
+CMD ["npm", "run", "start"]
